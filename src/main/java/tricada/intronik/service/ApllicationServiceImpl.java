@@ -35,8 +35,10 @@ import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -251,15 +253,13 @@ public class ApllicationServiceImpl implements ApllicationService {
         Date date = sourceFormat.parse(dateString);
         String formattedDate = targetDateFormat.format(date);
 
-        int numberOfDaysToAdd = requestModel.getNumberofnights();
-        LocalDate localDateNew = requestModel.getCheckin().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate newDate = localDateNew.plusDays(numberOfDaysToAdd);
-        ZonedDateTime zonedDateTime = newDate.atStartOfDay(ZoneId.systemDefault());
-        Date chekout = Date.from(zonedDateTime.toInstant());
+        String checkInDateString = requestModel.getCheckin();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate checkInDate = LocalDate.parse(checkInDateString, formatter);
+        LocalDate checkOutDate = checkInDate.plusDays(requestModel.getNumberofnights());
+        String checkOutDateString = checkOutDate.format(formatter);
+
         String id = GeneratorUtils.GenerateId("", DateUtils.now(), 5);
-        Object[] rowData = {id, requestModel.getUsername(), requestModel.getRoomtype(), requestModel.getAdditional(),
-                requestModel.getNumberofnights(), requestModel.getCheckin(),chekout,
-                "BOOKED", formattedDate, "System"};
         String filePath = projectDirectory + File.separator + "Database.xlsx";
 
         try {
@@ -274,6 +274,8 @@ public class ApllicationServiceImpl implements ApllicationService {
             int lastRowNumadditional = sheetaddtional.getLastRowNum();
             int lastRowNumreservation = sheetreservation.getLastRowNum();
             int lastRowNumroom = sheetroom.getLastRowNum();
+
+            Double tp = Double.valueOf(0);
 
             Boolean ada1 = false;
             for (int i = 1; i <= lastRowNummember; i++) {
@@ -294,6 +296,9 @@ public class ApllicationServiceImpl implements ApllicationService {
                 String cl = cell.getStringCellValue();
                 if (cl.equals(requestModel.getRoomtype())) {
                     ada2 = true;
+                    Cell cell2 = sheetroom.getRow(i).getCell(3);
+                    Double cl2 = cell2.getNumericCellValue();
+                    tp = tp + cl2;
 //                    throw new ApplicationException(Status.INVALID("username Already Exist"));
                 }
             }
@@ -308,6 +313,9 @@ public class ApllicationServiceImpl implements ApllicationService {
                 for(String item:requestModel.getAdditional()){
                     if (cl.equals(item)) {
                         ada3 = ada3 + 1;
+                        Cell cell2 = sheetroom.getRow(i).getCell(3);
+                        Double cl2 = cell2.getNumericCellValue();
+                        tp = tp + cl2;
 //                    throw new ApplicationException(Status.INVALID("username Already Exist"));
                     }
                 }
@@ -318,10 +326,21 @@ public class ApllicationServiceImpl implements ApllicationService {
 
             Row newRow = sheetreservation.createRow(lastRowNumreservation + 1);
 
+            Object[] rowData = {id, requestModel.getUsername(), requestModel.getRoomtype(), requestModel.getAdditional(),
+                    requestModel.getNumberofnights(), requestModel.getCheckin(),checkOutDateString,
+                    "BOOKED", tp*requestModel.getNumberofnights(), formattedDate, "System"};
+
             for (int i = 0; i < rowData.length; i++) {
                 Cell cell = newRow.createCell(i);
                 cell.setCellValue(rowData[i].toString());
             }
+
+            requestModel.setId(Double.valueOf(id));
+            requestModel.setCheckout(checkOutDateString);
+            requestModel.setStatus("BOOKED");
+            requestModel.setTotalprice(tp*requestModel.getNumberofnights());
+            requestModel.setCreateddate(date);
+            requestModel.setCreatedby("System");
 
             try (FileOutputStream fos = new FileOutputStream(filePath)) {
                 workbook.write(fos);

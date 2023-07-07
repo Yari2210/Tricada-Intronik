@@ -23,10 +23,10 @@ public class ReservationModel {
     private Integer numberofnights;
 
     @JsonProperty("checkin")
-    private Date checkin;
+    private String checkin;
 
     @JsonProperty("checkout")
-    private Date checkout;
+    private String checkout;
 
     @JsonProperty("status")
     private String status;
@@ -42,6 +42,9 @@ public class ReservationModel {
 
     @JsonProperty("createdby")
     private String createdby;
+
+    @JsonProperty("totalprice")
+    private Double totalprice;
 
     public Double getId() {
         return id;
@@ -83,19 +86,19 @@ public class ReservationModel {
         this.numberofnights = numberofnights;
     }
 
-    public Date getCheckin() {
+    public String getCheckin() {
         return checkin;
     }
 
-    public void setCheckin(Date checkin) {
+    public void setCheckin(String checkin) {
         this.checkin = checkin;
     }
 
-    public Date getCheckout() {
+    public String getCheckout() {
         return checkout;
     }
 
-    public void setCheckout(Date checkout) {
+    public void setCheckout(String checkout) {
         this.checkout = checkout;
     }
 
@@ -137,5 +140,13 @@ public class ReservationModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Double getTotalprice() {
+        return totalprice;
+    }
+
+    public void setTotalprice(Double totalprice) {
+        this.totalprice = totalprice;
     }
 }
