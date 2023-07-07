@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "4abb342f-c861-40ea-a980-1f2388607fc5",
+		"name": "Tricada-Intronik",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13513306"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/java/tricada/intronik/v1.0/tritronik/reservation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"parameter\": {\r\n        \"data\": {\r\n            \"username\" : \"yari\",\r\n            \"roomtype\": \"suite\",\r\n            \"additional\": [\"breakfast\", \"extrabed\"],\r\n            \"numberofnights\": 2,\r\n            \"checkin\": \"2023-01-01\"\r\n            \r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/java/tricada/intronik/v1.0/tritronik/reservation",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"java",
+						"tricada",
+						"intronik",
+						"v1.0",
+						"tritronik",
+						"reservation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/java/tricada/intronik/v1.0/tritronik/additional",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"parameter\": {\r\n        \"data\": {\r\n            \"username\" : \"yari\",\r\n            \"password\": \"yari123\",\r\n            \"firstname\": \"yari\",\r\n            \"lastname\" : \"rinaldi\",\r\n            \"gender\": \"male\",\r\n            \"dateofbirth\": \"12-03-1996\",\r\n            \"nationality\": \"indonesia\",\r\n            \"email\": \"yari@gmail.com\",\r\n            \"address\": \"BE\",\r\n            \"phonenumber\": \"08123456789\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/java/tricada/intronik/v1.0/tritronik/additional",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"java",
+						"tricada",
+						"intronik",
+						"v1.0",
+						"tritronik",
+						"additional"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/java/tricada/intronik/v1.0/tritronik/roomstype",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"parameter\": {\r\n        \"data\": {\r\n            \"username\" : \"yari\",\r\n            \"password\": \"yari123\",\r\n            \"firstname\": \"yari\",\r\n            \"lastname\" : \"rinaldi\",\r\n            \"gender\": \"male\",\r\n            \"dateofbirth\": \"12-03-1996\",\r\n            \"nationality\": \"indonesia\",\r\n            \"email\": \"yari@gmail.com\",\r\n            \"address\": \"BE\",\r\n            \"phonenumber\": \"08123456789\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/java/tricada/intronik/v1.0/tritronik/roomstype",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"java",
+						"tricada",
+						"intronik",
+						"v1.0",
+						"tritronik",
+						"roomstype"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/java/tricada/intronik/v1.0/tritronik/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"parameter\": {\r\n        \"data\": {\r\n            \"username\" : \"rinaldi\",\r\n            \"password\": \"yari123\",\r\n            \"firstname\": \"yari\",\r\n            \"lastname\" : \"rinaldi\",\r\n            \"gender\": \"male\",\r\n            \"dateofbirth\": \"12-03-1996\",\r\n            \"nationality\": \"indonesia\",\r\n            \"email\": \"yari@gmail.com\",\r\n            \"address\": \"BE\",\r\n            \"phonenumber\": \"08123456789\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/java/tricada/intronik/v1.0/tritronik/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"java",
+						"tricada",
+						"intronik",
+						"v1.0",
+						"tritronik",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
