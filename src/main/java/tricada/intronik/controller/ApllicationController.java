@@ -26,27 +26,6 @@ public class ApllicationController{
 
     }
 
-//    @GetMapping("/search")
-//    public Object search(@RequestBody BaseRequest<BaseParameter<RequestModel>> request) {
-//        BaseResponse response = new BaseResponse<RequestModel>();
-//        if(request.getParameter() == null){
-//            throw new ApplicationException(Status.INVALID("field parameter is required"));
-//        }
-//        if(request.getParameter().getData() == null){
-//            throw new ApplicationException(Status.INVALID("field data is required"));
-//        }
-//        RequestModel requestModel = request.getParameter().getData();
-//        try {
-//
-//            response.setResult(apllicationService.search(requestModel));
-//            response.setStatus(Status.SUCCESS("data has been successfully displayed"));
-//        } catch (Exception e) {
-//            logger.error(e.getMessage(), e);
-//            response.setStatus(Status.ERROR(e.getMessage()));
-//        }
-//        return response;
-//    }
-
     @PostMapping("/register")
     public Object register(@RequestBody BaseRequest<BaseParameter<RequestModel>> request) {
         BaseResponse response = new BaseResponse<RequestModel>();
@@ -59,7 +38,7 @@ public class ApllicationController{
         RequestModel requestModel = request.getParameter().getData();
         try {
             response.setResult(apllicationService.register(requestModel));
-            response.setStatus(Status.SUCCESS("data has been successfully exported"));
+            response.setStatus(Status.SUCCESS("data has been successfully registered"));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.setStatus(Status.ERROR(e.getMessage()));
@@ -119,48 +98,13 @@ public class ApllicationController{
         ReservationModel reservationModel = request.getParameter().getData();
         try {
             response.setResult(apllicationService.reservation(reservationModel));
-            response.setStatus(Status.SUCCESS("reservation data has been successfully displayed"));
+            response.setStatus(Status.SUCCESS("reservation data has been successfully create"));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.setStatus(Status.ERROR(e.getMessage()));
         }
         return response;
     }
-
-
-//
-//    @PostMapping("/generatelinkdownload")
-//    public Object download(@RequestBody BaseRequest<BaseParameter<RequestModel>> request) {
-//        BaseResponse response = new BaseResponse<AppModel>();
-//        if(request.getParameter() == null){
-//            throw new ApplicationException(Status.INVALID("field parameter is required"));
-//        }
-//        if(request.getParameter().getData() == null){
-//            throw new ApplicationException(Status.INVALID("field data is required"));
-//        }
-//        RequestModel requestModel = request.getParameter().getData();
-//        try {
-//            response.setResult(apllicationService.download(requestModel));
-//            response.setStatus(Status.SUCCESS("the download link has been successfully generated"));
-//        } catch (Exception e) {
-//            logger.error(e.getMessage(), e);
-//            response.setStatus(Status.ERROR(e.getMessage()));
-//        }
-//        return response;
-//    }
-//
-//    @GetMapping("/downloadfile")
-//    public Object downloadfile(@RequestParam(value = "file", required = false) String stringReq) {
-//        BaseResponse response = new BaseResponse<AppModel>();
-//        try {
-//            apllicationService.downloadfile(stringReq);
-//            response.setStatus(Status.SUCCESS("file has been successfully downloaded"));
-//        } catch (Exception e) {
-//            logger.error(e.getMessage(), e);
-//            response.setStatus(Status.ERROR(e.getMessage()));
-//        }
-//        return response;
-//    }
 
 }
 
