@@ -8,7 +8,7 @@ import java.util.List;
 public class ReservationModel {
 
     @JsonProperty("id")
-    private Double id;
+    private String id;
 
     @JsonProperty("username")
     private String username;
@@ -46,11 +46,11 @@ public class ReservationModel {
     @JsonProperty("totalprice")
     private Double totalprice;
 
-    public Double getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -25,7 +25,7 @@ public class RequestModel {
     private String gender;
 
     @JsonProperty("dateofbirth")
-    private Date dateofbirth;
+    private String dateofbirth;
 
     @JsonProperty("nationality")
     private String nationality;
@@ -37,7 +37,7 @@ public class RequestModel {
     private String address;
 
     @JsonProperty("phonenumber")
-    private Double phonenumber;
+    private String phonenumber;
 
     @JsonProperty("updatedby")
     private String updatedby;
@@ -156,19 +156,19 @@ public class RequestModel {
         this.address = address;
     }
 
-    public Date getDateofbirth() {
+    public String getDateofbirth() {
         return dateofbirth;
     }
 
-    public void setDateofbirth(Date dateofbirth) {
+    public void setDateofbirth(String dateofbirth) {
         this.dateofbirth = dateofbirth;
     }
 
-    public Double getPhonenumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(Double phonenumber) {
+    public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
 }

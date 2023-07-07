@@ -335,7 +335,7 @@ public class ApllicationServiceImpl implements ApllicationService {
                 cell.setCellValue(rowData[i].toString());
             }
 
-            requestModel.setId(Double.valueOf(id));
+            requestModel.setId(id);
             requestModel.setCheckout(checkOutDateString);
             requestModel.setStatus("BOOKED");
             requestModel.setTotalprice(tp*requestModel.getNumberofnights());
